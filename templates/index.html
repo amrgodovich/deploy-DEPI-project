@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Twitter Sentiment Analysis</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <input type="text" class="form-control" id="topic" name="topic" placeholder="Enter topic to search" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Twitter Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Twitter username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Twitter Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Twitter password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+    </div>
+</body>
+</html>

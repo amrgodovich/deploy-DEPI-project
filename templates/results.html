@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .charts-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+        }
+        .chart {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .tweets-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .tweet-section {
+            width: 45%;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .tweet-section h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .tweet-section p {
+            font-size: 1em;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis Results for "{{ topic }}"</h1>
+
+    <!-- Pie Chart -->
+    <div class="charts-container">
+        <div class="chart">
+            <h2>Sentiment Distribution</h2>
+            <img src="{{ url_for('static', filename=charts[0]) }}" alt="Pie Chart">
+        </div>
+
+        <!-- Word Clouds -->
+        <div class="chart">
+            <h2>Word Cloud (All Tweets)</h2>
+            <img src="{{ url_for('static', filename=charts[2][0]) }}" alt="Word Cloud All">
+        </div>
+        <div class="chart">
+            <h2>Word Cloud (Positive Tweets)</h2>
+            <img src="{{ url_for('static', filename=charts[2][1]) }}" alt="Word Cloud Positive">
+        </div>
+        <div class="chart">
+            <h2>Word Cloud (Negative Tweets)</h2>
+            <img src="{{ url_for('static', filename=charts[2][2]) }}" alt="Word Cloud Negative">
+        </div>
+    </div>
+
+    <!-- Trend Plot -->
+    <div class="charts-container">
+        <div class="chart">
+            <h2>Positive/Negative Trends</h2>
+            <img src="{{ url_for('static', filename=charts[1]) }}" alt="Trend Plot">
+        </div>
+    </div>
+
+    <!-- Top 2 Positive and Negative Tweets -->
+    <div class="tweets-container">
+        <div class="tweet-section">
+            <h2>Top Positive Tweets</h2>
+            {% for tweet in charts[3] %}
+                <p>{{ tweet }}</p>
+            {% endfor %}
+        </div>
+        <div class="tweet-section">
+            <h2>Top Negative Tweets</h2>
+            {% for tweet in charts[4] %}
+                <p>{{ tweet }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
